@@ -1,4 +1,3 @@
-import { log } from "console";
 import { readFile, writeFile } from "fs/promises";
 import { join } from "path";
 
@@ -28,16 +27,16 @@ const searchValue = (id) => (DB[id] ? DB[id] : null);
 
 const updateDB = async () => await updateJson(pathToDB, DB);
 // get all words
-const sendAllData = () => DB;
+export const sendAllData = () => DB;
 
 // get one word
-const sendSingleValue = (id) => {
+export const sendSingleValue = (id) => {
   if (!searchValue(id)) return new Error("DB: no such value in DataBase");
   return DB[id];
 };
 
 // add word to DB
-const addValue = async (data) => {
+export const addValue = async (data) => {
   if (searchValue(data.en))
     console.error(
       "DB: this value already in DataBase, try editValue if you want to change it"
